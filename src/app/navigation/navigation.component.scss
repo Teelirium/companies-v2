@@ -1,0 +1,28 @@
+.navigation {
+  display: flex;
+  list-style: none;
+
+  &__list {
+    list-style: none;
+    display: flex;
+    gap: 15px;
+  }
+
+  &__btn {
+    padding: 10px;
+    border-radius: 15px;
+    cursor: pointer;
+    color: black;
+    background-color: #d1d5db;
+    &:hover {
+      background-color: #9ca3af;
+    }
+    &--active {
+      color: #064e3b;
+      background-color: #6ee7b7;
+      &:hover {
+        background-color: #34d399;
+      }
+    }
+  }
+}

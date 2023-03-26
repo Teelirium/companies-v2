@@ -1,0 +1,23 @@
+.toolbar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  background-color: #3b82f6;
+  color: white;
+  font-weight: bold;
+  padding: 0 20px;
+}
+
+.content {
+  position: relative;
+  top: 60px;
+  padding: 20px;
+  background-color: #eff6ff;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
