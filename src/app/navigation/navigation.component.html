@@ -6,8 +6,11 @@
     >
       <a href="/"> Список </a>
     </li>
-    <li class="navigation__btn">
-      <a href="#"> Показать на карте </a>
+    <li
+      class="navigation__btn"
+      [class.navigation__btn--active]="router.url === '/map'"
+    >
+      <a href="/map"> Показать на карте </a>
     </li>
   </ul>
 </nav>
