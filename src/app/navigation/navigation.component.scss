@@ -1,19 +1,22 @@
 .navigation {
   display: flex;
+  justify-content: center;
   list-style: none;
 
   &__list {
-    list-style: none;
+    list-style-type: none;
     display: flex;
     gap: 15px;
+    padding-left: 0;
   }
 
   &__btn {
-    padding: 10px;
+    display: block;
+    padding: 8px 10px;
     border-radius: 15px;
-    cursor: pointer;
     color: black;
     background-color: #d1d5db;
+    transition: background-color 200ms;
     &:hover {
       background-color: #9ca3af;
     }

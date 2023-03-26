@@ -1,0 +1,31 @@
+.list {
+  list-style-type: none;
+  border: 1px solid #dbeafe;
+  padding: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  width: 400px;
+  height: 600px;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  scrollbar-width: thin;
+
+  &__item {
+  }
+
+  &::-webkit-scrollbar {
+    width: 10px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background-color: #dbeafe;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: white;
+    &:hover {
+      background-color: #93c5fd;
+    }
+  }
+}

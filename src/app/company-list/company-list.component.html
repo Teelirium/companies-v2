@@ -1,1 +1,5 @@
-<p>company-list works!</p>
+<ul class="list">
+  <li class="list__item" *ngFor="let company of companies">
+    <company-item [company]="company"></company-item>
+  </li>
+</ul>
