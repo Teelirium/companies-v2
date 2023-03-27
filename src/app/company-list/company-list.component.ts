@@ -11,9 +11,9 @@ export class CompanyListComponent {
   companies: Company[] = [];
   constructor(private companiesService: CompaniesService) {}
   getCompanies() {
-    this.companiesService
-      .getCompanies()
-      .subscribe((companies) => (this.companies = companies));
+    this.companiesService.getCompanies().subscribe((companies) => {
+      this.companies = companies;
+    });
   }
   ngOnInit() {
     this.getCompanies();

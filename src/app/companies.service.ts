@@ -6,10 +6,17 @@ import { Company } from 'src/Company';
   providedIn: 'root',
 })
 export class CompaniesService {
-  private url =
+  private urlForMany =
     'https://random-data-api.com/api/company/random_company?size=100';
+  private urlForOne = 'https://random-data-api.com/api/company/random_company';
+
   constructor(private http: HttpClient) {}
+
   getCompanies() {
-    return this.http.get<Company[]>(this.url);
+    return this.http.get<Company[]>(this.urlForMany);
+  }
+
+  getCompany(id: number) {
+    return this.http.get<Company>(this.urlForOne);
   }
 }

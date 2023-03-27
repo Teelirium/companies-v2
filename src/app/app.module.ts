@@ -9,6 +9,7 @@ import { CompanyListComponent } from './company-list/company-list.component';
 import { CompanyYandexMapComponent } from './company-yandex-map/company-yandex-map.component';
 import { LayoutComponent } from './layout/layout.component';
 import { NavigationComponent } from './navigation/navigation.component';
+import { CompanyDetailComponent } from './company-detail/company-detail.component';
 
 @NgModule({
   declarations: [
@@ -18,6 +19,7 @@ import { NavigationComponent } from './navigation/navigation.component';
     NavigationComponent,
     CompanyYandexMapComponent,
     CompanyItemComponent,
+    CompanyDetailComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule],
   providers: [],

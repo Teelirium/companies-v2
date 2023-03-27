@@ -4,12 +4,16 @@
   display: flex;
   align-items: center;
   gap: 10px;
-  height: 80px;
+  max-height: 80px;
+  overflow-y: hidden;
   &__image {
-    height: 70%;
-    width: 20%;
+    height: 100%;
+    width: 100px;
     object-fit: contain;
   }
   &__info {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
   }
 }

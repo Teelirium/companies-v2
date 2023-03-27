@@ -1,0 +1,17 @@
+<section *ngIf="company" class="container">
+  <header class="header">
+    <img
+      [src]="company.logo"
+      [alt]="'logo of ' + company.business_name"
+      class="header__image"
+    />
+    <div>
+      <h1>{{ company.suffix }} "{{ company.business_name }}"</h1>
+      <p>{{ company.type }}</p>
+      <p>{{ company.industry }}</p>
+    </div>
+  </header>
+  <q>{{ company.catch_phrase }}</q>
+  <p>Contact: {{ company.phone_number }}</p>
+  <p>Address: {{ company.full_address }}</p>
+</section>

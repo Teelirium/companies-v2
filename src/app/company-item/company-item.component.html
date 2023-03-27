@@ -1,12 +1,14 @@
-<div class="company-item" *ngIf="company">
-  <img
-    [src]="company.logo"
-    [alt]="'logo of ' + company.business_name"
-    class="company-item__image"
-  />
-  <div class="company-item__info">
-    <h4>{{ company.suffix }} "{{ company.business_name }}"</h4>
-    <p>{{ company.type }}</p>
-    <p>{{ company.industry }}</p>
-  </div>
-</div>
+<a [routerLink]="getUrl()" *ngIf="company">
+  <section class="company-item">
+    <img
+      [src]="company.logo"
+      [alt]="'logo of ' + company.business_name"
+      class="company-item__image"
+    />
+    <div class="company-item__info">
+      <h4>{{ company.suffix }} "{{ company.business_name }}"</h4>
+      <p>{{ company.type }}</p>
+      <p>{{ company.industry }}</p>
+    </div>
+  </section>
+</a>

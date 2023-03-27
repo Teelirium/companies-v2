@@ -1,4 +1,4 @@
-<ul class="list">
+<ul class="list" *ngIf="companies.length > 0">
   <li class="list__item" *ngFor="let company of companies">
     <company-item [company]="company"></company-item>
   </li>

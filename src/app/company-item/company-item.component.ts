@@ -8,4 +8,7 @@ import { Company } from 'src/Company';
 })
 export class CompanyItemComponent {
   @Input() company?: Company;
+  getUrl() {
+    return `/detail/${this.company?.id}`;
+  }
 }

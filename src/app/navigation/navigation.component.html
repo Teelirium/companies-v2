@@ -2,7 +2,7 @@
   <ul class="navigation__list">
     <li>
       <a
-        href="/"
+        [routerLink]="'/'"
         class="navigation__btn"
         [class.navigation__btn--active]="router.url === '/'"
       >
@@ -11,7 +11,7 @@
     </li>
     <li>
       <a
-        href="/map"
+        [routerLink]="'/map'"
         class="navigation__btn"
         [class.navigation__btn--active]="router.url === '/map'"
       >
