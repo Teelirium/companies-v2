@@ -1,0 +1,20 @@
+<div class="order-bar">
+  Сортировка списка:
+  <button
+    (click)="toggleOrder('business_name')"
+    class="order-bar__btn"
+    role="button"
+  >
+    Имя {{ getArrow("business_name") }}
+  </button>
+  <button (click)="toggleOrder('type')" class="order-bar__btn" role="button">
+    Тип {{ getArrow("type") }}
+  </button>
+  <button
+    (click)="toggleOrder('industry')"
+    class="order-bar__btn"
+    role="button"
+  >
+    Деятельность {{ getArrow("industry") }}
+  </button>
+</div>

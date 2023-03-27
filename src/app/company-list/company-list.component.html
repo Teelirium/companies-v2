@@ -1,5 +1,12 @@
+<company-sort *ngIf="companies.length > 0"></company-sort>
 <ul class="list" *ngIf="companies.length > 0">
-  <li class="list__item" *ngFor="let company of companies">
+  <li
+    class="list__item"
+    *ngFor="
+      let company of companies | orderBy : orderParams[0] : orderParams[1]
+    "
+  >
     <company-item [company]="company"></company-item>
   </li>
 </ul>
+<span *ngIf="companies.length === 0">Loading...</span>

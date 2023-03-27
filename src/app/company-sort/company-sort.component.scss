@@ -1,0 +1,20 @@
+$color1: #60a5fa;
+$color2: #2563eb;
+
+.order-bar {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  &__btn {
+    color: $color1;
+    border: 1px solid $color1;
+    background-color: transparent;
+    border-radius: 10px;
+    padding: 6px;
+    transition: color 200ms;
+    &:hover {
+      color: $color2;
+      border-color: $color2;
+    }
+  }
+}

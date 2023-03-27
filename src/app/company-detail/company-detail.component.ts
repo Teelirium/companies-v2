@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Company } from 'src/Company';
+import { Company } from 'src/app/types/Company';
 import { CompaniesService } from '../companies.service';
 
 @Component({

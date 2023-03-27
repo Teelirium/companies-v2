@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Company } from 'src/Company';
+import { Company } from 'src/app/types/Company';
 import { CompaniesService } from '../companies.service';
 
 @Component({
@@ -9,13 +9,20 @@ import { CompaniesService } from '../companies.service';
 })
 export class CompanyListComponent {
   companies: Company[] = [];
+  orderParams!: [keyof Company, 'asc' | 'desc'];
   constructor(private companiesService: CompaniesService) {}
+  ngOnInit() {
+    this.getCompanies();
+    this.getOrderParams();
+  }
   getCompanies() {
     this.companiesService.getCompanies().subscribe((companies) => {
       this.companies = companies;
     });
   }
-  ngOnInit() {
-    this.getCompanies();
+  getOrderParams() {
+    return this.companiesService.orderParams.subscribe((params) => {
+      this.orderParams = params;
+    });
   }
 }
