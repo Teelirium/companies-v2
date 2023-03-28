@@ -65,7 +65,6 @@ export class CompanyListComponent {
 
   private getFilterParams() {
     this.companiesService.filterParams.subscribe((params) => {
-      console.log(params);
       this.filterParams = params;
     });
   }
