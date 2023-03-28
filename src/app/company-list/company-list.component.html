@@ -1,12 +1,21 @@
-<company-sort *ngIf="companies.length > 0"></company-sort>
-<ul class="list" *ngIf="companies.length > 0">
-  <li
-    class="list__item"
-    *ngFor="
-      let company of companies | orderBy : orderParams[0] : orderParams[1]
-    "
-  >
-    <company-item [company]="company"></company-item>
-  </li>
-</ul>
-<span *ngIf="companies.length === 0">Loading...</span>
+<div class="container">
+  <company-filter
+    *ngIf="companies.length > 0"
+    [types]="types"
+    [industries]="industries"
+  ></company-filter>
+  <company-sort *ngIf="companies.length > 0"></company-sort>
+  <ul class="list" *ngIf="companies.length > 0">
+    <li
+      class="list__item"
+      *ngFor="
+        let company of companies
+          | orderBy : orderParams[0] : orderParams[1]
+          | filter : getFilterPredicate()
+      "
+    >
+      <company-item [company]="company"></company-item>
+    </li>
+  </ul>
+  <span *ngIf="companies.length === 0">Загрузка...</span>
+</div>

@@ -1,7 +1,13 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable } from 'rxjs';
+import {
+  BehaviorSubject,
+  debounceTime,
+  distinctUntilChanged,
+  Subject,
+} from 'rxjs';
 import { Company } from 'src/app/types/Company';
+import { FilterParams } from './types/FilterParams';
 import { OrderParams } from './types/OrderParams';
 
 @Injectable({
@@ -16,8 +22,13 @@ export class CompaniesService {
     'business_name',
     'asc',
   ]);
-  orderParams: Observable<OrderParams<Company>> =
-    this.#orderParamSubject.asObservable();
+  orderParams = this.#orderParamSubject.asObservable();
+
+  #filterParamSubject = new Subject<FilterParams>();
+  filterParams = this.#filterParamSubject.pipe(
+    debounceTime(300),
+    distinctUntilChanged()
+  );
 
   constructor(private http: HttpClient) {}
 
@@ -31,5 +42,12 @@ export class CompaniesService {
 
   setOrderParams(params: OrderParams<Company>) {
     this.#orderParamSubject.next(params);
+  }
+
+  setFilterParams(params: FilterParams) {
+    this.#filterParamSubject.next({
+      ...params,
+      search: params.search?.toLowerCase(),
+    });
   }
 }

@@ -1,0 +1,37 @@
+$color: #60a5fa;
+$color-hover: #2563eb;
+$color-darker: #1d4ed8;
+.form {
+  display: flex;
+  justify-content: center;
+  gap: 6px;
+  &__label {
+    text-align: center;
+  }
+  &__textbox {
+    outline: 0;
+    padding: 4px;
+    border-radius: 6px;
+    background-color: transparent;
+    color: $color;
+    border: 1px solid $color;
+    transition: color 200ms;
+    &:hover {
+      color: $color-hover;
+      border-color: $color-hover;
+    }
+    &:focus {
+      color: $color-darker;
+      border-color: $color-darker;
+    }
+    &::placeholder {
+      color: inherit;
+    }
+  }
+  &__select {
+    &::after {
+    }
+  }
+  &__option {
+  }
+}

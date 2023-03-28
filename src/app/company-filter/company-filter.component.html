@@ -1,0 +1,46 @@
+<form [formGroup]="filterParams" class="form">
+  <label for="search" class="form__label">
+    <input
+      placeholder="Поиск"
+      class="form__textbox"
+      id="search"
+      type="text"
+      formControlName="search"
+      (input)="updateParams()"
+    />
+  </label>
+
+  <label for="type" class="form__label"
+    >Тип
+    <select
+      id="type"
+      formControlName="type"
+      (change)="updateParams()"
+      class="form__textbox form__select"
+    >
+      <option [value]="" selected></option>
+      <option *ngFor="let type of types" [value]="type">
+        {{ type }}
+      </option>
+    </select>
+  </label>
+
+  <label for="industry" class="form__label"
+    >Деятельность
+    <select
+      id="industry"
+      formControlName="industry"
+      (change)="updateParams()"
+      class="form__textbox form__select"
+    >
+      <option [value]="" selected class="form__option"></option>
+      <option
+        *ngFor="let industry of industries"
+        [value]="industry"
+        class="form__option"
+      >
+        {{ industry }}
+      </option>
+    </select>
+  </label>
+</form>
