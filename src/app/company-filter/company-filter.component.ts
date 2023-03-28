@@ -28,4 +28,9 @@ export class CompanyFilterComponent {
   updateParams() {
     this.companiesSerive.setFilterParams(this.filterParams.value);
   }
+
+  resetFormValue(key: keyof FilterParams) {
+    this.filterParams.controls[key]?.reset();
+    this.updateParams();
+  }
 }

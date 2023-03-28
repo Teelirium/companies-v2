@@ -1,37 +1,64 @@
-$color: #60a5fa;
-$color-hover: #2563eb;
-$color-darker: #1d4ed8;
 .form {
   display: flex;
   justify-content: center;
   gap: 6px;
-  &__label {
-    text-align: center;
+  &__input-wrapper {
+    display: flex;
   }
-  &__textbox {
-    outline: 0;
-    padding: 4px;
-    border-radius: 6px;
-    background-color: transparent;
-    color: $color;
-    border: 1px solid $color;
-    transition: color 200ms;
-    &:hover {
-      color: $color-hover;
-      border-color: $color-hover;
-    }
-    &:focus {
-      color: $color-darker;
-      border-color: $color-darker;
-    }
-    &::placeholder {
-      color: inherit;
-    }
+}
+
+@media screen and (max-width: 640px) {
+  .form {
+    flex-direction: column;
   }
-  &__select {
-    &::after {
-    }
+}
+
+.textbox {
+  outline: 0;
+  padding: 4px;
+  border-radius: 6px;
+  background-color: transparent;
+  color: var(--blue-400);
+  border: 1px solid var(--blue-400);
+  transition: color 200ms;
+  &:hover {
+    color: var(--blue-600);
+    border-color: var(--blue-600);
+  }
+  &:focus {
+    color: var(--blue-700);
+    border-color: var(--blue-700);
+  }
+  &::placeholder {
+    color: var(--blue-300);
+  }
+}
+
+.select {
+  appearance: none;
+  &--default {
+    color: var(--blue-300);
   }
   &__option {
+    color: var(--blue-400);
+    &--disabled {
+      color: var(--blue-300);
+    }
+  }
+}
+
+.btn {
+  padding: 0;
+  background: none;
+  border: none;
+
+  height: 100%;
+  width: 20px;
+  display: flex;
+  align-items: center;
+  color: var(--blue-400);
+  &:hover {
+    color: var(--blue-600);
+    border-color: var(--blue-600);
   }
 }

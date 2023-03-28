@@ -1,46 +1,134 @@
 <form [formGroup]="filterParams" class="form">
-  <label for="search" class="form__label">
+  <div class="form__input-wrapper">
     <input
-      placeholder="Поиск"
-      class="form__textbox"
+      placeholder="Поиск по имени"
+      class="textbox"
       id="search"
       type="text"
       formControlName="search"
       (input)="updateParams()"
     />
-  </label>
+    <button class="btn" (click)="resetFormValue('search')">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 20 20"
+        fill="currentColor"
+        class="w-5 h-5"
+      >
+        <path
+          d="M6.28 5.22a.75.75 0 00-1.06 1.06L8.94 10l-3.72 3.72a.75.75 0 101.06 1.06L10 11.06l3.72 3.72a.75.75 0 101.06-1.06L11.06 10l3.72-3.72a.75.75 0 00-1.06-1.06L10 8.94 6.28 5.22z"
+        />
+      </svg>
+    </button>
+  </div>
 
-  <label for="type" class="form__label"
-    >Тип
+  <div class="form__input-wrapper">
     <select
       id="type"
       formControlName="type"
       (change)="updateParams()"
-      class="form__textbox form__select"
+      class="textbox select"
+      [ngClass]="{ 'select--default': !filterParams.value.type }"
     >
-      <option [value]="" selected></option>
-      <option *ngFor="let type of types" [value]="type">
+      <option
+        [value]="''"
+        class="select__option--disabled"
+        selected
+        hidden
+        disabled
+      >
+        Тип
+      </option>
+      <option *ngFor="let type of types" [value]="type" class="select__option">
         {{ type }}
       </option>
     </select>
-  </label>
+    <button class="btn" *ngIf="!filterParams.value.type">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 20 20"
+        fill="currentColor"
+        class="w-5 h-5"
+      >
+        <path
+          fill-rule="evenodd"
+          d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z"
+          clip-rule="evenodd"
+        />
+      </svg>
+    </button>
+    <button
+      *ngIf="filterParams.value.type"
+      class="btn"
+      (click)="resetFormValue('type')"
+    >
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 20 20"
+        fill="currentColor"
+        class="w-5 h-5"
+      >
+        <path
+          d="M6.28 5.22a.75.75 0 00-1.06 1.06L8.94 10l-3.72 3.72a.75.75 0 101.06 1.06L10 11.06l3.72 3.72a.75.75 0 101.06-1.06L11.06 10l3.72-3.72a.75.75 0 00-1.06-1.06L10 8.94 6.28 5.22z"
+        />
+      </svg>
+    </button>
+  </div>
 
-  <label for="industry" class="form__label"
-    >Деятельность
+  <div class="form__input-wrapper">
     <select
       id="industry"
       formControlName="industry"
       (change)="updateParams()"
-      class="form__textbox form__select"
+      class="textbox select"
+      [ngClass]="{ 'select--default': !filterParams.value.industry }"
     >
-      <option [value]="" selected class="form__option"></option>
+      <option
+        [value]="''"
+        class="select__option--disabled"
+        selected
+        hidden
+        disabled
+      >
+        Деятельность
+      </option>
       <option
         *ngFor="let industry of industries"
         [value]="industry"
-        class="form__option"
+        class="select__option"
       >
         {{ industry }}
       </option>
     </select>
-  </label>
+    <label for="industry" class="btn" *ngIf="!filterParams.value.industry">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 20 20"
+        fill="currentColor"
+        class="w-5 h-5"
+      >
+        <path
+          fill-rule="evenodd"
+          d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z"
+          clip-rule="evenodd"
+        />
+      </svg>
+    </label>
+    <button
+      *ngIf="filterParams.value.industry"
+      class="btn"
+      (click)="resetFormValue('industry')"
+    >
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 20 20"
+        fill="currentColor"
+        class="w-5 h-5"
+      >
+        <path
+          d="M6.28 5.22a.75.75 0 00-1.06 1.06L8.94 10l-3.72 3.72a.75.75 0 101.06 1.06L10 11.06l3.72 3.72a.75.75 0 101.06-1.06L11.06 10l3.72-3.72a.75.75 0 00-1.06-1.06L10 8.94 6.28 5.22z"
+        />
+      </svg>
+    </button>
+  </div>
 </form>
