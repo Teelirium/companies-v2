@@ -1,4 +1,4 @@
-export interface Company {
+export type Company = {
   id: number;
   uid: string;
   business_name: string;
@@ -15,4 +15,4 @@ export interface Company {
   full_address: string;
   latitude: number;
   longitude: number;
-}
+};

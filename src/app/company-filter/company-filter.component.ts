@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
-import { CompaniesService } from '../companies.service';
+import { CompaniesService } from 'src/app/companies/services/companies.service';
 import { FilterParams } from '../types/FilterParams';
 
 @Component({
@@ -20,13 +20,13 @@ export class CompanyFilterComponent {
 
   constructor(
     private fb: FormBuilder,
-    private companiesSerive: CompaniesService
+    private companiesService: CompaniesService
   ) {}
 
   ngOnInit() {}
 
   updateParams() {
-    this.companiesSerive.setFilterParams(this.filterParams.value);
+    this.companiesService.setFilterParams(this.filterParams.value);
   }
 
   resetFormValue(key: keyof FilterParams) {

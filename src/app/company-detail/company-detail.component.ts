@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Company } from 'src/app/types/Company';
-import { CompaniesService } from '../companies.service';
+import { Observable } from 'rxjs';
+import { CompaniesService } from 'src/app/companies/services/companies.service';
+import { Company } from 'src/app/companies/types/Company';
 
 @Component({
   selector: 'company-detail',
@@ -9,15 +10,14 @@ import { CompaniesService } from '../companies.service';
   styleUrls: ['./company-detail.component.scss'],
 })
 export class CompanyDetailComponent {
-  company?: Company;
+  company$!: Observable<Company>;
   constructor(
     private companiesService: CompaniesService,
     private route: ActivatedRoute
   ) {}
   ngOnInit() {
     const id = Number(this.route.snapshot.paramMap.get('id'));
-    this.companiesService.getCompany(id).subscribe((company) => {
-      this.company = company;
-    });
+    this.companiesService.fetchCompany(id);
+    this.company$ = this.companiesService.company$;
   }
 }

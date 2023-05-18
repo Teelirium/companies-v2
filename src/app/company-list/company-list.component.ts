@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
 import { uniqBy } from 'lodash';
-import { Company } from 'src/app/types/Company';
-import { CompaniesService } from '../companies.service';
+import { CompaniesService } from 'src/app/companies/services/companies.service';
+import { Company } from 'src/app/companies/types/Company';
 import { FilterParams } from '../types/FilterParams';
+import { OrderParams } from '../types/OrderParams';
 
 @Component({
   selector: 'company-list',
@@ -11,7 +12,7 @@ import { FilterParams } from '../types/FilterParams';
 })
 export class CompanyListComponent {
   companies: Company[] = [];
-  orderParams!: [keyof Company, 'asc' | 'desc'];
+  orderParams!: OrderParams<Company>;
   filterParams: FilterParams = {};
   types: string[] = [];
   industries: string[] = [];
@@ -46,7 +47,8 @@ export class CompanyListComponent {
   }
 
   private getCompanies() {
-    this.companiesService.getCompanies().subscribe((companies) => {
+    this.companiesService.fetchCompanies();
+    this.companiesService.companies$.subscribe((companies) => {
       this.companies = companies;
       this.types = uniqBy(companies, 'type')
         .map((c) => c.type)
@@ -58,13 +60,13 @@ export class CompanyListComponent {
   }
 
   private getOrderParams() {
-    return this.companiesService.orderParams.subscribe((params) => {
+    return this.companiesService.orderParams$.subscribe((params) => {
       this.orderParams = params;
     });
   }
 
   private getFilterParams() {
-    this.companiesService.filterParams.subscribe((params) => {
+    this.companiesService.filterParams$.subscribe((params) => {
       this.filterParams = params;
     });
   }

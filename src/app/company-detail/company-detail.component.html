@@ -1,4 +1,4 @@
-<section *ngIf="company" class="container">
+<section *ngIf="company$ | async as company" class="container">
   <header class="header">
     <img
       [src]="company.logo"

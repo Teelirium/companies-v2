@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { CompaniesService } from '../companies.service';
-import { Company } from '../types/Company';
+import { CompaniesService } from 'src/app/companies/services/companies.service';
+import { Company } from '../companies/types/Company';
 import { OrderParams } from '../types/OrderParams';
 
 @Component({
@@ -12,7 +12,7 @@ export class CompanySortComponent {
   orderParams!: OrderParams<Company>;
   constructor(private companyService: CompaniesService) {}
   ngOnInit() {
-    this.companyService.orderParams.subscribe(
+    this.companyService.orderParams$.subscribe(
       (params) => (this.orderParams = params)
     );
   }
