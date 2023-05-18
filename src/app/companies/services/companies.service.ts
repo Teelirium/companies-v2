@@ -7,16 +7,18 @@ import {
   ReplaySubject,
   shareReplay,
   Subject,
+  takeUntil,
 } from 'rxjs';
 import { CachedHttpClient } from 'src/app/cached-http.service';
 import { Company } from 'src/app/companies/types/Company';
 import { FilterParams } from 'src/app/types/FilterParams';
 import { OrderParams } from 'src/app/types/OrderParams';
+import { Unsub } from 'src/app/util/unsub.class';
 
 @Injectable({
   providedIn: 'root',
 })
-export class CompaniesService {
+export class CompaniesService extends Unsub {
   private urlForMany =
     'https://random-data-api.com/api/company/random_company?size=100';
   private urlForOne = (id: number) =>
@@ -40,19 +42,21 @@ export class CompaniesService {
   #companySubject = new ReplaySubject<Company>(1);
   company$ = this.#companySubject.asObservable();
 
-  constructor(private http: HttpClient, private cachedHttp: CachedHttpClient) {}
+  constructor(private http: HttpClient, private cachedHttp: CachedHttpClient) {
+    super();
+  }
 
   fetchCompanies() {
     this.cachedHttp
       .getCached<Company[]>(this.urlForMany)
-      .pipe(shareReplay(1))
+      .pipe(shareReplay(1), takeUntil(this.unsub$))
       .subscribe((companies) => this.#companiesSubject.next(companies));
   }
 
   fetchCompany(id: number) {
     this.cachedHttp
       .getCached<Company[]>(this.urlForMany)
-      .pipe(shareReplay(1))
+      .pipe(shareReplay(1), takeUntil(this.unsub$))
       .subscribe((companies) => {
         const company = companies.filter((c) => c.id === id)[0];
         this.#companySubject.next(company);

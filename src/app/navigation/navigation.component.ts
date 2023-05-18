@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'navigation',
@@ -7,5 +7,10 @@ import { Router } from '@angular/router';
   styleUrls: ['./navigation.component.scss'],
 })
 export class NavigationComponent {
-  constructor(public router: Router) {}
+  #id: string | null = null;
+  constructor(public router: Router, private route: ActivatedRoute) {}
+
+  ngOnInit() {
+    this.#id = this.route.snapshot.paramMap.get('id');
+  }
 }

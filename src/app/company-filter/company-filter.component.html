@@ -1,4 +1,4 @@
-<form [formGroup]="filterParams" class="form">
+<form [formGroup]="filterParamsGroup" class="form">
   <div class="form__input-wrapper">
     <input
       placeholder="Поиск по имени"
@@ -28,7 +28,7 @@
       formControlName="type"
       (change)="updateParams()"
       class="textbox select"
-      [ngClass]="{ 'select--default': !filterParams.value.type }"
+      [ngClass]="{ 'select--default': !filterParamsGroup.value.type }"
     >
       <option
         [value]="''"
@@ -43,7 +43,7 @@
         {{ type }}
       </option>
     </select>
-    <button class="btn" *ngIf="!filterParams.value.type">
+    <button class="btn" *ngIf="!filterParamsGroup.value.type">
       <svg
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 20 20"
@@ -58,7 +58,7 @@
       </svg>
     </button>
     <button
-      *ngIf="filterParams.value.type"
+      *ngIf="filterParamsGroup.value.type"
       class="btn"
       (click)="resetFormValue('type')"
     >
@@ -81,7 +81,7 @@
       formControlName="industry"
       (change)="updateParams()"
       class="textbox select"
-      [ngClass]="{ 'select--default': !filterParams.value.industry }"
+      [ngClass]="{ 'select--default': !filterParamsGroup.value.industry }"
     >
       <option
         [value]="''"
@@ -100,7 +100,7 @@
         {{ industry }}
       </option>
     </select>
-    <label for="industry" class="btn" *ngIf="!filterParams.value.industry">
+    <label for="industry" class="btn" *ngIf="!filterParamsGroup.value.industry">
       <svg
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 20 20"
@@ -115,7 +115,7 @@
       </svg>
     </label>
     <button
-      *ngIf="filterParams.value.industry"
+      *ngIf="filterParamsGroup.value.industry"
       class="btn"
       (click)="resetFormValue('industry')"
     >
